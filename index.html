@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="我的个人网站工作台，一个简单、快速的统一导航入口。"
+    />
+    <meta name="theme-color" content="#f5f6f3" />
+    <title>我的工作台</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="我的工作台首页">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </span>
+          <span class="brand-name">我的工作台</span>
+        </a>
+
+        <div class="header-actions">
+          <span class="site-count" id="site-count"></span>
+          <button class="add-button" id="open-dialog" type="button">
+            <span aria-hidden="true">+</span>
+            添加网站
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <p class="eyebrow">PERSONAL DIRECTORY</p>
+          <h1 id="page-title">所有常用网站，<br />从这里出发。</h1>
+          <p class="intro-copy">一个简单的个人入口，连接数据、研究与知识。</p>
+        </section>
+
+        <section class="directory" aria-labelledby="directory-title">
+          <div class="section-heading">
+            <h2 id="directory-title">网站</h2>
+            <span class="section-line" aria-hidden="true"></span>
+          </div>
+          <div class="site-grid" id="site-grid"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>MY WORKBENCH</span>
+        <span id="current-year"></span>
+      </footer>
+    </div>
+
+    <dialog class="site-dialog" id="site-dialog" aria-labelledby="dialog-title">
+      <form class="dialog-form" id="site-form" method="dialog">
+        <div class="dialog-header">
+          <div>
+            <p class="eyebrow">NEW DESTINATION</p>
+            <h2 id="dialog-title">添加网站</h2>
+          </div>
+          <button class="icon-button" id="close-dialog" type="button" aria-label="关闭">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <label class="field">
+          <span>网站名称</span>
+          <input name="name" type="text" autocomplete="off" maxlength="36" required />
+        </label>
+
+        <label class="field">
+          <span>网址</span>
+          <input
+            name="url"
+            type="url"
+            inputmode="url"
+            autocomplete="url"
+            placeholder="https://"
+            required
+          />
+        </label>
+
+        <label class="field">
+          <span>一句话介绍</span>
+          <textarea name="description" rows="3" maxlength="100"></textarea>
+        </label>
+
+        <fieldset class="color-field">
+          <legend>标记颜色</legend>
+          <div class="swatches">
+            <label><input type="radio" name="color" value="#1768e5" checked /><span style="--swatch:#1768e5"></span></label>
+            <label><input type="radio" name="color" value="#db5b3d" /><span style="--swatch:#db5b3d"></span></label>
+            <label><input type="radio" name="color" value="#15936f" /><span style="--swatch:#15936f"></span></label>
+            <label><input type="radio" name="color" value="#d89311" /><span style="--swatch:#d89311"></span></label>
+            <label><input type="radio" name="color" value="#7357c8" /><span style="--swatch:#7357c8"></span></label>
+          </div>
+        </fieldset>
+
+        <div class="dialog-actions">
+          <button class="secondary-button" id="cancel-dialog" type="button">取消</button>
+          <button class="primary-button" type="submit">添加到工作台</button>
+        </div>
+      </form>
+    </dialog>
+
+    <template id="site-card-template">
+      <article class="site-card">
+        <a class="card-link" target="_blank" rel="noopener noreferrer">
+          <div class="card-topline">
+            <span class="card-index"></span>
+            <span class="external-icon" aria-hidden="true">↗</span>
+          </div>
+          <div class="site-identity">
+            <span class="favicon-wrap">
+              <img class="site-favicon" alt="" width="30" height="30" />
+              <span class="favicon-fallback" aria-hidden="true"></span>
+            </span>
+            <h3 class="card-title"></h3>
+          </div>
+          <p class="card-description"></p>
+          <span class="card-host"></span>
+        </a>
+        <button class="delete-button" type="button" aria-label="移除网站" title="移除网站" hidden>×</button>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
