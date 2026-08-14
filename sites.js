@@ -24,6 +24,14 @@ export const defaultSites = [
     favicon: "https://research-report-atlas.netlify.app/favicon.ico",
   },
   {
+    id: "ai22-source-navigator",
+    name: "AI 22人一手资料导航",
+    description: "持续追踪 22 位重要 AI 人物的论文、文章、演讲、访谈与官方来源。",
+    url: "https://ai22-source-navigator.netlify.app/",
+    color: "#1768e5",
+    favicon: "https://ai22-source-navigator.netlify.app/favicon.svg",
+  },
+  {
     id: "gx-tweets",
     name: "GX 推文研究库",
     description: "汇集 AI 相关推文、标签与分析报告，方便浏览和回溯重点观点。",
