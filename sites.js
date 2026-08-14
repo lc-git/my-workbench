@@ -16,6 +16,14 @@ export const defaultSites = [
     favicon: "https://company-research-archive.netlify.app/favicon.ico",
   },
   {
+    id: "research-report-atlas",
+    name: "研究报告精读库",
+    description: "汇集研究报告的卡片式精读版本，方便回看、比较并继续深入阅读。",
+    url: "https://research-report-atlas.netlify.app/",
+    color: "#0d6b78",
+    favicon: "https://research-report-atlas.netlify.app/favicon.ico",
+  },
+  {
     id: "gx-tweets",
     name: "GX 推文研究库",
     description: "汇集 AI 相关推文、标签与分析报告，方便浏览和回溯重点观点。",
