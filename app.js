@@ -1,16 +1,21 @@
 import { defaultSites } from "./sites.js";
 
-const STORAGE_KEY = "my-workbench:user-sites:v1";
+const USER_SITES_STORAGE_KEY = "my-workbench:user-sites:v1";
+const HIDDEN_SITES_STORAGE_KEY = "my-workbench:hidden-sites:v1";
 
 const grid = document.querySelector("#site-grid");
 const count = document.querySelector("#site-count");
 const template = document.querySelector("#site-card-template");
 const dialog = document.querySelector("#site-dialog");
 const form = document.querySelector("#site-form");
+const undoToast = document.querySelector("#undo-toast");
+const undoMessage = document.querySelector("#undo-message");
+const undoButton = document.querySelector("#undo-button");
+let undoTimer;
 
 function readUserSites() {
   try {
-    const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    const stored = JSON.parse(localStorage.getItem(USER_SITES_STORAGE_KEY) || "[]");
     return Array.isArray(stored) ? stored : [];
   } catch {
     return [];
@@ -18,7 +23,36 @@ function readUserSites() {
 }
 
 function saveUserSites(sites) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(sites));
+  localStorage.setItem(USER_SITES_STORAGE_KEY, JSON.stringify(sites));
+}
+
+function readHiddenSiteIds() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(HIDDEN_SITES_STORAGE_KEY) || "[]");
+    return Array.isArray(stored) ? stored : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveHiddenSiteIds(ids) {
+  localStorage.setItem(HIDDEN_SITES_STORAGE_KEY, JSON.stringify(ids));
+}
+
+function showUndo(siteName, undo) {
+  window.clearTimeout(undoTimer);
+  undoMessage.textContent = `已删除“${siteName}”`;
+  undoToast.hidden = false;
+
+  undoButton.onclick = () => {
+    window.clearTimeout(undoTimer);
+    undo();
+    undoToast.hidden = true;
+  };
+
+  undoTimer = window.setTimeout(() => {
+    undoToast.hidden = true;
+  }, 6000);
 }
 
 function getHostname(url) {
@@ -31,7 +65,11 @@ function getHostname(url) {
 
 function renderSites() {
   const userSites = readUserSites();
-  const sites = [...defaultSites, ...userSites];
+  const hiddenSiteIds = readHiddenSiteIds();
+  const sites = [
+    ...defaultSites.filter((site) => !hiddenSiteIds.includes(site.id)),
+    ...userSites,
+  ];
   const fragment = document.createDocumentFragment();
 
   sites.forEach((site, index) => {
@@ -53,17 +91,37 @@ function renderSites() {
     favicon.addEventListener("load", () => card.classList.add("has-favicon"));
     favicon.addEventListener("error", () => favicon.remove());
 
-    if (site.userAdded) {
-      const deleteButton = card.querySelector(".delete-button");
-      deleteButton.hidden = false;
-      deleteButton.addEventListener("click", () => {
+    const deleteButton = card.querySelector(".delete-button");
+    deleteButton.setAttribute("aria-label", `删除${site.name}`);
+    deleteButton.title = `删除${site.name}`;
+    deleteButton.addEventListener("click", () => {
+      if (site.userAdded) {
         saveUserSites(userSites.filter((item) => item.id !== site.id));
         renderSites();
+        showUndo(site.name, () => {
+          saveUserSites([...readUserSites(), site]);
+          renderSites();
+        });
+        return;
+      }
+
+      saveHiddenSiteIds([...new Set([...hiddenSiteIds, site.id])]);
+      renderSites();
+      showUndo(site.name, () => {
+        saveHiddenSiteIds(readHiddenSiteIds().filter((id) => id !== site.id));
+        renderSites();
       });
-    }
+    });
 
     fragment.append(card);
   });
+
+  if (sites.length === 0) {
+    const emptyState = document.createElement("p");
+    emptyState.className = "empty-directory";
+    emptyState.textContent = "工作台暂时为空";
+    fragment.append(emptyState);
+  }
 
   grid.replaceChildren(fragment);
   count.textContent = `${sites.length} 个站点`;

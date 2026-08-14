@@ -104,6 +104,11 @@
       </form>
     </dialog>
 
+    <div class="undo-toast" id="undo-toast" role="status" aria-live="polite" hidden>
+      <span id="undo-message"></span>
+      <button id="undo-button" type="button">撤销</button>
+    </div>
+
     <template id="site-card-template">
       <article class="site-card">
         <a class="card-link" target="_blank" rel="noopener noreferrer">
@@ -121,7 +126,7 @@
           <p class="card-description"></p>
           <span class="card-host"></span>
         </a>
-        <button class="delete-button" type="button" aria-label="移除网站" title="移除网站" hidden>×</button>
+        <button class="delete-button" type="button" aria-label="删除网站" title="删除网站">×</button>
       </article>
     </template>
 
