@@ -24,6 +24,14 @@ export const defaultSites = [
     favicon: "https://forum.thirdbridge.com/favicon.ico",
   },
   {
+    id: "semianalysis-archive",
+    name: "SemiAnalysis 文章归档",
+    description: "汇集半导体、AI 基础设施与产业商业领域的深度分析文章。",
+    url: "https://newsletter.semianalysis.com/archive",
+    color: "#2080c9",
+    favicon: "https://newsletter.semianalysis.com/favicon.ico",
+  },
+  {
     id: "research-report-atlas",
     name: "研究报告精读库",
     description: "汇集研究报告的卡片式精读版本，方便回看、比较并继续深入阅读。",
