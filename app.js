@@ -87,9 +87,13 @@ function renderSites() {
     card.querySelector(".card-host").textContent = getHostname(site.url);
     fallback.textContent = site.name.trim().charAt(0).toUpperCase();
 
-    favicon.src = site.favicon || `${new URL(site.url).origin}/favicon.ico`;
-    favicon.addEventListener("load", () => card.classList.add("has-favicon"));
-    favicon.addEventListener("error", () => favicon.remove());
+    if (site.favicon) {
+      favicon.src = site.favicon;
+      favicon.addEventListener("load", () => card.classList.add("has-favicon"));
+      favicon.addEventListener("error", () => favicon.remove());
+    } else {
+      favicon.remove();
+    }
 
     const deleteButton = card.querySelector(".delete-button");
     deleteButton.setAttribute("aria-label", `删除${site.name}`);

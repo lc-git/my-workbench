@@ -13,7 +13,7 @@ export const defaultSites = [
     description: "从产品、商业模式、财务质量到估值情景，沉淀持续更新的公司研究。",
     url: "https://company-research-archive.netlify.app/",
     color: "#15936f",
-    favicon: "https://company-research-archive.netlify.app/favicon.ico",
+    favicon: null,
   },
   {
     id: "third-bridge-forum",
@@ -21,7 +21,7 @@ export const defaultSites = [
     description: "浏览高临最新新增的专家访谈、行业观点与研究内容。",
     url: "https://forum.thirdbridge.com/zh/home/recently-added",
     color: "#db5b3d",
-    favicon: "https://forum.thirdbridge.com/favicon.ico",
+    favicon: "https://www.thirdbridge.com/assets/favicons/android-chrome-192x192.png?v=vukehm9OdWN0FGt70FPmMCRdyPUSzJjPXx-tOlSZxrc",
   },
   {
     id: "semianalysis-archive",
@@ -29,7 +29,15 @@ export const defaultSites = [
     description: "汇集半导体、AI 基础设施与产业商业领域的深度分析文章。",
     url: "https://newsletter.semianalysis.com/archive",
     color: "#2080c9",
-    favicon: "https://newsletter.semianalysis.com/favicon.ico",
+    favicon: "https://substack-post-media.s3.amazonaws.com/public/images/c56db922-37c2-4d28-baac-2f4653e1ab00_512x512.png",
+  },
+  {
+    id: "168x-writings",
+    name: "168X 深度文章",
+    description: "收录 AI、加密货币、半导体与前沿科技的长篇研究、访谈和教程。",
+    url: "https://168x.club/writings",
+    color: "#7357c8",
+    favicon: "https://168x.club/icon?3a974ec0e813b60d",
   },
   {
     id: "research-report-atlas",
@@ -37,7 +45,7 @@ export const defaultSites = [
     description: "汇集研究报告的卡片式精读版本，方便回看、比较并继续深入阅读。",
     url: "https://research-report-atlas.netlify.app/",
     color: "#0d6b78",
-    favicon: "https://research-report-atlas.netlify.app/favicon.ico",
+    favicon: null,
   },
   {
     id: "ai22-source-navigator",
@@ -53,7 +61,7 @@ export const defaultSites = [
     description: "汇集 AI 相关推文、标签与分析报告，方便浏览和回溯重点观点。",
     url: "https://gx.yz.rs/",
     color: "#1768e5",
-    favicon: "https://gx.yz.rs/favicon.ico",
+    favicon: "https://gx.yz.rs/favicon.ico?favicon.0b3bf435.ico",
   },
   {
     id: "ai-kol",
@@ -61,7 +69,7 @@ export const defaultSites = [
     description: "追踪 AI 领域关键意见领袖的推文，并按标签和报告沉淀研究线索。",
     url: "https://aikol.yz.rs/",
     color: "#7357c8",
-    favicon: "https://aikol.yz.rs/favicon.ico",
+    favicon: "https://aikol.yz.rs/favicon.ico?favicon.0b3bf435.ico",
   },
   {
     id: "podcast-research",
@@ -69,7 +77,7 @@ export const defaultSites = [
     description: "整理长播客的论点摘要、嘉宾信息、原文转录与深度研究内容。",
     url: "https://podcast-research-iota.vercel.app/podcast-research.html",
     color: "#db5b3d",
-    favicon: "https://podcast-research-iota.vercel.app/favicon.ico",
+    favicon: null,
   },
   {
     id: "paper-vault",
@@ -77,7 +85,7 @@ export const defaultSites = [
     description: "集中收藏、检索和阅读 BVC 相关论文与研究资料。",
     url: "https://bvclibrary.zheshi.tech/paper-vault-bv/",
     color: "#15936f",
-    favicon: "https://bvclibrary.zheshi.tech/favicon.ico",
+    favicon: null,
   },
   {
     id: "bvc-portal",
@@ -85,6 +93,6 @@ export const defaultSites = [
     description: "进入 BVC 社区服务与内容空间的统一入口。",
     url: "https://bvcportal.com/",
     color: "#d89311",
-    favicon: "https://bvcportal.com/favicon.ico",
+    favicon: "https://bvcportal.com/res/images/logo.png",
   },
 ];
