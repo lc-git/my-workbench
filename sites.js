@@ -16,6 +16,14 @@ export const defaultSites = [
     favicon: "https://company-research-archive.netlify.app/favicon.ico",
   },
   {
+    id: "third-bridge-forum",
+    name: "高临专家访谈平台",
+    description: "浏览高临最新新增的专家访谈、行业观点与研究内容。",
+    url: "https://forum.thirdbridge.com/zh/home/recently-added",
+    color: "#db5b3d",
+    favicon: "https://forum.thirdbridge.com/favicon.ico",
+  },
+  {
     id: "research-report-atlas",
     name: "研究报告精读库",
     description: "汇集研究报告的卡片式精读版本，方便回看、比较并继续深入阅读。",
